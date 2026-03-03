@@ -1,0 +1,30 @@
+services:
+  talentops-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_SUPABASE_URL=${VITE_SUPABASE_URL}
+        - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}
+        - VITE_GEMINI_API_KEY=${VITE_GEMINI_API_KEY}
+        - GEMINI_API_KEY=${GEMINI_API_KEY}
+        - VITE_CHATBOT_URL=${VITE_CHATBOT_URL}
+        - VITE_EMAILJS_SERVICE_ID=${VITE_EMAILJS_SERVICE_ID}
+        - VITE_EMAILJS_TEMPLATE_ID=${VITE_EMAILJS_TEMPLATE_ID}
+        - VITE_EMAILJS_PUBLIC_KEY=${VITE_EMAILJS_PUBLIC_KEY}
+    container_name: talentops-app
+    ports:
+      - "8881:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - talentops-network
+
+networks:
+  talentops-network:
+    driver: bridge

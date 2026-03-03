@@ -1,0 +1,43 @@
+╭────────────────────── 🚀 New SDK Available ───────────────────────╮
+│ Together Python SDK 2.0 is now available!                         │
+│                                                                   │
+│ Install the beta:                                                 │
+│ pip install --pre together  or  uv add together --prerelease      │
+│ allow                                                             │
+│                                                                   │
+│ New SDK: https://github.com/togethercomputer/together-py          │
+│ Migration guide:                                                  │
+│ https://docs.together.ai/docs/pythonv2-migration-guide            │
+│                                                                   │
+│ This package will be maintained until January 2026.               │
+│ Set TOGETHER_NO_BANNER=1 to hide this message.                    │
+╰───────────────────────────────────────────────────────────────────╯
+INFO:binding.database:Database initialized with TalentOps client only (Cohort inactive).
+INFO:binding.utils:RAG utilities initialized with AsyncOpenAI client.
+/Users/kummaraakash/modalgateway-Tops-1/unified_server.py:2426: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [9638]
+INFO:     Waiting for application startup.
+INFO:__main__:============================================================
+INFO:__main__:Modal Gateway - Unified Server v2.0
+INFO:__main__:Running on port 8035
+INFO:__main__:============================================================
+INFO:__main__:Available endpoints:
+INFO:__main__:  GET  /              - Root
+INFO:__main__:  GET  /health        - Health check
+INFO:__main__:  POST /slm/chat      - SLM Chatbot
+INFO:__main__:  POST /llm/query     - OpenAI LLM
+INFO:__main__:  POST /rag/query     - RAG Query
+INFO:__main__:  POST /rag/ingest    - RAG Ingest
+INFO:__main__:============================================================
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8035 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9638]

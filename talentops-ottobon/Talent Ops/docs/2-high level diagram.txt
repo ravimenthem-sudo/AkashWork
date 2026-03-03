@@ -1,0 +1,63 @@
+HIGH LEVEL SYSTEM ARCHITECTURE
+==============================
+
+1. ARCHITECTURAL PATTERN
+------------------------
+TalentOps follows a **Modern SPA (Single Page Application)** architecture pattern, leveraging the "Backend-as-a-Service" (BaaS) model with Supabase. 
+
+- **Frontend:** React (Vite) + TailwindCSS for a responsive, component-driven UI.
+- **Backend/Database:** Supabase (PostgreSQL) for data persistence, Auth, and Realtime subscriptions.
+- **Real-time Layer:** Supabase Realtime (WebSockets) for instant updates on Chat and Dashboard widgets.
+- **Storage:** Supabase Storage for artifacts (Resumes, Profile Pics, Task Attachments).
+
+2. HIGH LEVEL DIAGRAM (Mermaid Representation)
+----------------------------------------------
+```mermaid
+graph TD
+    UserClient[Web Browser (React App)]
+    
+    subgraph "Frontend Layer"
+        Dashboards[Role-Based Dashboards]
+        Services[Service Layer (messageService, employeeService)]
+        State[React State / Context]
+    end
+
+    subgraph "Supabase Cloud Ecosystem"
+        Auth[GoTrue (Authentication)]
+        DB[(PostgreSQL Database)]
+        Realtime[Realtime Server (WebSockets)]
+        Storage[Object Storage (Buckets)]
+        EdgeFunctions[Edge Functions (Custom Logic)]
+    end
+
+    %% Interactions
+    UserClient -->|HTTPS / API Calls| Services
+    Services -->|REST / PostgREST| DB
+    Services -->|Auth Headers| Auth
+    Services -->|File Uploads| Storage
+    
+    %% Realtime Connection
+    Realtime -- WebSockets --> Services
+    DB -.->|Triggers Changes| Realtime
+    
+    %% Internal Flows
+    Dashboards --> Services
+    Auth -.-> DB
+```
+
+3. PRE-BUILT INTEGRATIONS IMPLICATIONS
+--------------------------------------
+- **Authentication:** Built-in email/password using Supabase Auth.
+- **Role Management:** "Profiles" table linked 1:1 with Auth Users, containing `org_id` and `role` to enforce multi-tenancy and permissions via RLS (Row Level Security).
+- **Scalability:** Horizontal scaling handled by the Supabase platform; Frontend can be hosted on any static CDN (Vercel/Netlify).
+
+4. KEY DATA FLOWS
+-----------------
+1. **User Action:** Employee applies for leave.
+2. **API Call:** Frontend `leaveService` sends INSERT to `public.leaves`.
+3. **Validation:** Database Constraints & RLS ensure user owns the record.
+4. **Notification:** 
+   - Database Trigger fires on INSERT.
+   - (Optional) Edge Function calculates "Leave Risk" (AI).
+   - Realtime event sent to Manager's Dashboard.
+5. **Update:** Manager approves -> UPDATE `public.leaves` -> Employee notified via Realtime.

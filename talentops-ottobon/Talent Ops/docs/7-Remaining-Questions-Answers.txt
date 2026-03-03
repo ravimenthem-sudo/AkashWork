@@ -1,0 +1,70 @@
+ADDRESSING REMAINING DOCUMENTATION GAPS
+=======================================
+
+This document provides specific answers to the "Blank" or "Missing" items identified in your gap analysis table.
+
+1. AI & INTELLIGENCE LAYERS
+---------------------------
+**Q7: "Zero-Cost AI" Explanation**
+- **Answer:** The current codebase **does not** contain active integrations with paid AI providers (OpenAI/Together API). The "Zero-Cost" claim likely refers to a planned implementation using local LLMs (e.g., via Ollama) or is a marketing roadmap item that has not yet been engineered.
+- **Reference:** extensive code search for 'openai', 'together', 'api_key' returned 0 results.
+
+**Q10-14: Model Gateway Architecture / Config / Guardrails**
+- **Answer:** The "Model Gateway" pattern is **not implemented** in the current version (V1). There is no "Gateway" code, no `.env` configuration for it, and no guardrail logic.
+- **Recommendation:** These should be marked as "Phase 3 Roadmap Items".
+
+**Q15: Resume Parsing Workflow**
+- **Answer:** Feature not present in current V1. Resume upload exists (via `storage` bucket), but no parsing logic (Python/Node.js) is connected to it.
+
+**Q16: AI Chatbot RAG Implementation**
+- **Answer:** RAG (Retrieved Augmented Generation) is **not implemented**. The chatbot currently operates as a standard messaging tool (Human-to-Human) without an AI agent participant.
+
+**Q17: Candidate Fit Score Algorithm**
+- **Answer:** Not implemented. The database features a `student_skills_assessments` table, but the scoring is manual (entered by reviewers), not algorithmic.
+
+2. INFRASTRUCTURE & OPERATIONS
+------------------------------
+**Q3: Pricing Model**
+- **Answer:** The software is currently structured as an internal enterprise tool or SaaS shell. No pricing logic, subscription tiers, or payment gateway integrations (Stripe/Razorpay) exist in the code.
+
+**Q33: ChromaDB Integration**
+- **Answer:** No vector database integration (ChromaDB/Pinecone) exists in the codebase.
+
+**Q34: Supabase Edge Functions**
+- **Answer:** Folder structure implies usage, but no active Edge Functions (Deno) were found deployed in the source tree. Logic is currently handled via Client-Side Services (`services/`) or Database Triggers (`triggers/`).
+
+**Q35-41: DevOps (CI/CD, Backups, Secrets, Monitoring)**
+- **Answer:** 
+  - **CI/CD:** No `.github/workflows` or GitLab CI definitions found.
+  - **Secrets:** Managed via local `.env` (seen in file list), but not securely vaulted.
+  - **Backups:** Relying on default Supabase platform backups.
+  - **Monitoring:** No Sentry/LogRocket integration found.
+
+3. DATABASE & SECURITY DETAILS
+------------------------------
+**Q26: Database Indexes & Constraints**
+- **Answer:** 
+  - **Primary Keys:** UUIDs used consistently (`uuid_generate_v4()`).
+  - **Foreign Keys:** Enforced (e.g., `org_id` links everywhere).
+  - **Indexes:** Standard PK indexes only; no custom performance indexes (e.g., `CREATE INDEX ON messages(conversation_id)`) observed in the SQL dumps.
+
+**Q27: Row Level Security (RLS) Policies**
+- **Answer:** 
+  - Storage Policies **ARE** implemented (See `fix_storage_policies.sql`) to restrict file access.
+  - Table Policies (SELECT/INSERT) are implied by the architecture but the specific SQL to enforce `org_id` isolation was not found in the explicit SQL dumps provided.
+
+**Q24: Missing Schemas (Performance, Assets, Policies)**
+- **Answer:**
+  - `performance_reviews`: Partially covered by `student_task_reviews`.
+  - `policies` / `assets`: **Missing** from standard schema. Need to be created.
+
+4. WORKFLOW LOGIC
+-----------------
+**Q20: Conflict Resolution Logic**
+- **Answer:** The system uses a "Last Write Wins" strategy. If two managers approve a request, the second update overwrites the first. No optimistic concurrency control (version number check) is implemented.
+
+**Q21: Leave Approval Workflow**
+- **Answer:** Single-step approval. Any user with `role='manager'` or `role='executive'` (sharing the same `org_id`) can approve `pending` leaves. No multi-tier escalation path exists in the code.
+
+**Q23: Performance Review Workflow**
+- **Answer:** The UI (`MyReviewPage.tsx`) exists, but it reads from a static or manually populated table. There is no automated "Review Cycle" scheduler backend.

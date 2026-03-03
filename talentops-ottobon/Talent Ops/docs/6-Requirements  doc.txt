@@ -1,0 +1,57 @@
+TALENT OPS - REQUIREMENTS SPECIFICATION
+=======================================
+
+1. FUNCTIONAL REQUIREMENTS
+--------------------------
+
+**1.1. User Management & Access Control**
+- System MUST support 4 distinct roles: Executive, Manager, Team Lead, Employee.
+- System MUST use Row Level Security (RLS) to ensure Tenants (Organizations) cannot access each other's data.
+- System MUST allow Executives to invite Managers via Email.
+
+**1.2. Dashboard & Visualization**
+- Executive Dashboard MUST display aggregated payroll costs and leave trends.
+- Manager Dashboard MUST show "Payroll Health" widgets (Pending documents, upcoming deadlines).
+- Employee Dashboard MUST show personal "My Score" and Task assignments.
+
+**1.3. Payroll & Compliance Operations**
+- System MUST allow Managers to "Generate Payroll" for a selected month.
+- System MUST calculate Net Salary based on: `(Basic + Allowances) - (Tax + LOP)`.
+- System MUST prevent payroll generation if "Employee Finance" data is missing.
+- System MUST generate a Notification when a Payslip is ready.
+
+**1.4. Leave Management**
+- Employees MUST be able to apply for leave with `Date Range` and `Reason`.
+- Managers MUST receive Real-time alerts for new leave requests.
+- System MUST auto-calculate "Loss of Pay" (LOP) days if approved leaves exceed `monthly_leave_quota`.
+
+**1.5. Real-Time Messaging**
+- System MUST support 1:1 Direct Messages (DMs) and Team Channels.
+- System MUST support file attachments (Resume, IDs) in chat.
+- Chat MUST persist history and read receipts.
+
+2. NON-FUNCTIONAL REQUIREMENTS
+------------------------------
+
+**2.1. Performance & Latency**
+- Dashboard load time MUST be under 2 seconds for organizations with <1000 employees.
+- Real-time chat latency MUST be under 200ms (via WebSockets).
+
+**2.2. Security & Data Privacy**
+- All API requests MUST be authenticated via JWT (Supabase Auth).
+- Payroll data MUST be encrypted at rest (PostgreSQL standard).
+- File uploads (Attachments) MUST NOT exceed 10MB per file.
+
+**2.3. Reliability & Availability**
+- System relies on Supabase High Availability (99.9% SLA).
+- Offline Mode: Application MUST handle network drops gracefully (Optimistic UI updates for Task status).
+
+3. ADDRESSING "MISSING" SPECIFICATIONS
+--------------------------------------
+*Clarifications on items flagged as "Missing" in user feedback:*
+
+- **Resume Parsing Workflow:** Currently Scope for Phase 3. No existing logic in codebase V1.
+- **AI Guardrails:** Implementation pending. Current "AI" usage is limited to "Draft Evaluations" (OpenAI wrapper) without strict content filters.
+- **Offline Mode Strategy:** Current implementation uses React Query caching; full offline-sync (PouchDB style) is NOT implemented.
+- **Disaster Recovery:** Managed entirely by Supabase Platform backups (Point-in-time recovery).
+- **Conflict Resolution:** "Last Write Wins" strategy for concurrent Manager edits on Leave requests.

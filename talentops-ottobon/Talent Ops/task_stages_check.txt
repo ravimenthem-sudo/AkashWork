@@ -1,0 +1,2 @@
+✅ Table task_stages exists.
+   Sample data: []

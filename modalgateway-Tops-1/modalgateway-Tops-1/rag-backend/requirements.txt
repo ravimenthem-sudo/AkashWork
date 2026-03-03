@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+python-dotenv
+together
+sentence-transformers
+numpy
+openai
+PyPDF2
+python-docx

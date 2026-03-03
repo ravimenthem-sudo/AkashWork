@@ -1,0 +1,65 @@
+LOW LEVEL DESIGN & COMPONENT INTERACTION
+========================================
+
+1. FRONTEND COMPONENT HIERARCHY
+-------------------------------
+The application is structured around a "Layout-first" approach based on user roles.
+
+**Root (`App.tsx`)**
+- `AuthGuard`: Checks `supabase.auth.session()`. Redirects to Login if null.
+- `RoleRouter`: determining which Dashboard to mount (`ManagerLayout`, `EmployeeLayout`, etc.).
+
+**Key Modules & Interactions:**
+
+A. **Messaging Architecture (`ChatWindow.jsx`)**
+   - **State:** `activeConversation`, `messages[]`, `typingUsers`.
+   - **Services used:** `messageService.js`.
+   - **Real-time Pattern:**
+     1. `useEffect` mounts `subscribeToConversation(id)`.
+     2. Incoming `INSERT` on `messages` table -> Appends to local state `messages[]`.
+     3. Incoming `UPDATE` on `message_reactions` -> Updates specific message reaction count.
+
+B. **Payroll Generator (`PayrollFormModal.jsx`)**
+   - **State:** `selectedEmployees[]`, `payrollPreview[]`.
+   - **Logic Flow:**
+     1. `fetchEmployees()` -> Lists eligible users.
+     2. `handleCalculatePreview()` -> Calls `utils/payrollCalculations.js`.
+        - Fetches `attendance` records (COUNT).
+        - Fetches `leaves` (SUM duration where status='approved').
+        - Calculates `LOP` (Loss of Pay).
+        - Returns `net_salary`.
+     3. `handleGeneratePayroll()` -> Bulk INSERT into `payroll` table.
+
+2. SERVICE LAYER CONTRACTS
+--------------------------
+Services act as the abstraction layer over Supabase SDK.
+
+**`messageService.js`** functions:
+- `sendMessage(convId, text, files)`: Transactional envelope for Message INSERT + Attachment UPLOAD + Index UPSERT.
+- `getConversationsByCategory(userId)`: Complex join logic (Members -> Conversations -> Indexes).
+
+**`payrollCalculations.js`** utilities:
+- `calculateLopDays(totalDays, presentDays, approvedLeaves)`: Core business logic.
+- `calculateNetSalary(...)`: Pure function for financial math.
+
+3. STATE MANAGEMENT STRATEGY
+----------------------------
+- **Local UI State:** `useState` for form inputs, lightweight toggles.
+- **Server State:** Handled directly via `useEffect` + async Service calls. No global Redux functionality observed (simpler, cleaner for this scale).
+- **Context API:** Likely used for `AuthContext` (User Profile access across components).
+
+4. DATABASE TRIGGER LOGIC (INFERRED)
+------------------------------------
+Low-level data integrity is maintained via triggers (implied by typical Supabase patterns):
+- **`on_auth_user_created`**: Automatically inserts a row into `public.profiles`.
+- **`update_updated_at`**: Updates timestamp columns on record modification.
+
+5. ERROR HANDLING PATTERN
+-------------------------
+**Service Level:**
+- `try/catch` wrapper in every service function.
+- Returns `{ data, error }` tuple (matching Supabase style) or `null` with console error logging.
+
+**UI Level:**
+- Components check `if (error)` -> Render `Alert` / Toast notification.
+- "Fail Gracefully" UI in Dashboards (e.g., if Stats fail to load, show 0 instead of crash).

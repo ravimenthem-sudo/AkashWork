@@ -1,0 +1,57 @@
+╭─────────────────────── 🚀 New SDK Available ────────────────────────╮
+│ Together Python SDK 2.0 is now available!                           │
+│                                                                     │
+│ Install the beta:                                                   │
+│ pip install --pre together  or  uv add together --prerelease allow  │
+│                                                                     │
+│ New SDK: https://github.com/togethercomputer/together-py            │
+│ Migration guide:                                                    │
+│ https://docs.together.ai/docs/pythonv2-migration-guide              │
+│                                                                     │
+│ This package will be maintained until January 2026.                 │
+│ Set TOGETHER_NO_BANNER=1 to hide this message.                      │
+╰─────────────────────────────────────────────────────────────────────╯
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_id" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_source" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_to_evaluate" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_a" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_b" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_name" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/kummaraakash/modalgateway-Tops-1/.venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_type" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+INFO:     Started server process [14713]
+INFO:     Waiting for application startup.
+INFO:unified_server:============================================================
+INFO:unified_server:Modal Gateway - Unified Server v2.0
+INFO:unified_server:Running on port 8035
+INFO:unified_server:============================================================
+INFO:unified_server:Available endpoints:
+INFO:unified_server:  GET  /              - Root
+INFO:unified_server:  GET  /health        - Health check
+INFO:unified_server:  POST /slm/chat      - SLM Chatbot
+INFO:unified_server:  POST /llm/query     - OpenAI LLM
+INFO:unified_server:  POST /rag/query     - RAG Query
+INFO:unified_server:  POST /rag/ingest    - RAG Ingest
+INFO:unified_server:============================================================
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8035 (Press CTRL+C to quit)

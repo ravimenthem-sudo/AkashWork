@@ -1,0 +1,11 @@
+
+Checking table: task_submissions
+✅ Table exists.
+   Table is empty.
+
+Checking table: task_evidence
+❌ Error/Missing: Could not find the table 'public.task_evidence' in the schema cache
+
+Checking table: tasks
+✅ Table exists.
+   Columns: id, title, description, assigned_to, assigned_by, priority, status, project_id, team_id, start_date, due_date, assigned_to_name, due_time, assigned_by_name, lifecycle_state, sub_state, requested_next_state, validation_requested_at, validated_by, validated_at, validation_comment, rejection_count, proof_url, proof_submitted_at, updated_at, created_by, org_id, issues, phase_validations, allocated_hours, actual_hours, manager_justification, employee_justification, proof_text, lifecycle_state_updated_at, elapsed_work_seconds, remaining_seconds, is_overdue, is_locked, last_timer_start, start_time, access_requested, access_reason, access_requested_at, access_status, closed_by_manager, closed_reason, reassigned_to, reassigned_at, current_stage_id, reassigned_from, created_at, performance_points, performance_percentile, skill_id, points_earned, percentile_score, completed_at

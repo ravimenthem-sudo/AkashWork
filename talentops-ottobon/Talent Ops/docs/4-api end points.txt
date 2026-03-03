@@ -1,0 +1,74 @@
+API & SERVICE LAYER DOCUMENTATION
+================================
+
+Since TalentOps uses Supabase (BaaS), the "API" consists of Client-Side Service wrappers and Supabase Edge Functions (Remote Procedure Calls - RPC).
+
+1. AUTHENTICATION & PROFILES
+----------------------------
+**`fetchCurrentUserWithProfile()`**
+- **Method:** `supabase.auth.getUser()` + `SELECT FROM profiles`
+- **Returns:** `{ user, profile, orgId, role }`
+- **Description:** Resolves the current auth session and joins it with the application-specific profile data.
+
+2. MESSAGING SERVICE (`messageService.js`)
+------------------------------------------
+**`getConversationsByCategory(userId, category, orgId)`**
+- **Logic:**
+  1. Fetch `conversation_members` for user.
+  2. JOIN `conversations` where `type` matches category (dm/team).
+  3. JOIN `conversation_indexes` for last_message preview.
+  4. Client-side sort by `last_message_at`.
+
+**`sendMessage(conversationId, userId, content, files)`**
+- **Logic:**
+  1. INSERT into `messages`.
+  2. UPLOAD files to `storage.message-attachments` (if any).
+  3. UPSERT `conversation_indexes` with new preview text.
+
+**`subscribeToConversation(conversationId, callback)`**
+- **Type:** WebSocket Subscription
+- **Channels:** `postgres_changes` on `messages`, `message_reactions`, `poll_votes`.
+
+3. EMPLOYEE SERVICE (`employeeService.ts`)
+------------------------------------------
+**`fetchEmployees(orgId)`**
+- **Logic:** Aggregates data from 5 tables to build a holistic "Employee View".
+  - `profiles`: Base info.
+  - `departments`: Name mapping.
+  - `project_members`: Project roles.
+  - `attendance`: Real-time status (Online/Offline) & Check-in times.
+  - `leaves`: Availability override (On Leave).
+
+4. PAYROLL ENGINE (`payrollCalculations.js`)
+--------------------------------------------
+**`generatePayrollRecord(employeeId, month, year, ...)`**
+- **Type:** Transactional Logic
+- **Logic:**
+  1. Checks `checkPayrollExists`.
+  2. Fetches `employee_finance` (Salary structure).
+  3. Calculates `lopDays` based on `attendance` + `leaves`.
+  4. Computes `netSalary = (Basic+Allowances) - (Tax + LOP)`.
+  5. INSERT into `payroll`.
+  6. INSERT into `notifications` (Payslip generated).
+
+5. DATABASE RPCs (Remote Procedure Calls)
+-----------------------------------------
+*Note: These are PostgreSQL functions called via `supabase.rpc()`*
+
+- **`get_org_stats`** (Inferred): Aggregates dashboard numbers.
+- **`generate_draft_evaluation`** (Mentioned in code): Triggers AI draft for performance reviews.
+
+6. EDGE FUNCTIONS
+-----------------
+*Hosted on Supabase Edge Network (Deno/Node)*
+
+- **`analyze-leave-risk`**:
+  - **Trigger:** Webhook on `leaves` INSERT?
+  - **Function:** Checks leave overlap with project deadlines.
+  - **Output:** Updates `leaves.risk_score`.
+
+7. API SECURITY (RLS POLICIES)
+------------------------------
+All "Endpoints" are secured by Postgres Row Level Security:
+- **`auth.uid() = user_id`**: Users can only see their own data.
+- **`org_id = user_org_id`**: Tenants cannot see other organizations' data.

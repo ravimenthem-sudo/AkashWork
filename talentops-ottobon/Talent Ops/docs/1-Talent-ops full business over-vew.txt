@@ -1,0 +1,72 @@
+TALENT OPS - BUSINESS OVERVIEW & STRATEGIC CONTEXT
+====================================================
+
+1. PROBLEM STATEMENT
+--------------------
+Modern organizations struggle with fragmented workforce management. Key pain points include:
+- **Siloed Data:** HR data (leaves, payroll) lives separately from Operational data (tasks, projects), making it impossible to correlate workforce availability with project delivery risks.
+- **Manual Compliance:** Payroll processing and compliance checks (e.g., document submission) are manual, error-prone, and reactive, leading to month-end crunches.
+- **Subjective Performance:** Employee evaluations are often disconnected from actual daily output, leading to bias and lack of actionable feedback.
+- **Communication Gaps:** Corporate chat tools are often noisy and disconnected from the actual work contexts (tasks/projects).
+
+2. VALUE PROPOSITION & ROI
+--------------------------
+TalentOps integrates HR, Project Management, and Payroll into a single "Operating System" for talent.
+
+**Measurable Outcomes:**
+- **30% Reduction in Admin Overhead:** unique "Payroll Health Widgets" and automated compliance tracking reduce manual HR chases.
+- **Real-Time Delivery Risk Mitigation:** correlates Leave data with Project timelines to predict bottlenecks.
+- **Fairer Performance Reviews:** Links "Skills Assessments" directly to "Task Completion" data.
+- **Zero-Cost Compliance:** Proactive alerts prevent payroll processing errors before they happen.
+
+3. TARGET CUSTOMER PERSONAS
+---------------------------
+**A. The Executive (buyer/Strategic User)**
+- **Goal:** Organizational efficiency, cost control, talent retention.
+- **Needs:** High-level dashboards, payroll cost aggregation, organizational health metrics.
+- **Key Feature in App:** Executive Dashboard (Org-wide stats).
+
+**B. The Organization Manager (Admin/Power User)**
+- **Goal:** Operational execution, compliance, resource allocation.
+- **Needs:** Tools to generate payroll, approve leaves, manage project portfolios, and onboard users.
+- **Key Feature in App:** Manager Dashboard, Payroll Generation Modal, Leave Approval Workflows.
+
+**C. The Team Lead (The Operator)**
+- **Goal:** Project delivery[deadline], team mentorship.
+- **Needs:** Task board visibility, team availability (who is on leave?), skill gap analysis.
+- **Key Feature in App:** Team Lead Dashboard, Task Management, Team Chat.
+
+**D. The Employee (The End User)**
+- **Goal:** Clarity on tasks, timely pay, career growth.
+- **Needs:** Simple leave application, easy access to payslips, transparent task lists.
+- **Key Feature in App:** Employee Dashboard, "My Score" profile.
+
+4. COMPETITIVE DIFFERENTIATION
+------------------------------
+| Feature | Traditional HRIS (Workday/Bamboo) | Project Tools (Jira/Asana) | **TalentOps** |
+| :--- | :--- | :--- | :--- |
+| **Scope** | HR Admin focus | Task focus | **Combined HR + Ops context** |
+| **Payroll** | Often external integration | None | **Integrated Compliance & Calculation** |
+| **AI** | Generic chatbots | Task summaries | **Context-aware Logic (Leave Risk Analysis)** |
+| **Real-time** | Low (Static records) | Medium (Updates) | **High (WebSockets for Chat & Status)** |
+
+5. PRODUCT ROADMAP (INFERRED)
+-----------------------------
+**Phase 1: Foundation (Current State)**
+- Core Database Schema (Users, Orgs, Profiles).
+- Authentication & Role-Based Access Control (RBAC).
+- Basic Dashboarding for all 4 personas.
+
+**Phase 2: Operational Core**
+- Task Management System (Kanban/Lists).
+- Leave Management Workflow (Apply -> Approve/Reject).
+- Real-time Messaging System (DMs, Team Chats).
+
+**Phase 3: Financial & Intelligence Layer**
+- Payroll Processing Engine (Calculation, LOP integration).
+- Automated Compliance Monitoring (Document checks).
+- AI-Assisted Workflows (Leave risk scoring).
+
+**Phase 4: Advanced Analytics**
+- Organizational Health functionality.
+- Predictive Resourcing.

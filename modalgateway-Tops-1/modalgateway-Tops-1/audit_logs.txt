@@ -1,0 +1,140 @@
+[2026-02-25 12:14:20] Starting Functional Regression Testing...
+[2026-02-25 12:14:20] Health Check /health: PASS (0.017s)
+[2026-02-25 12:14:20] Health Check /slm/health: PASS (0.002s)
+[2026-02-25 12:14:20] Health Check /llm/health: PASS (0.001s)
+[2026-02-25 12:14:20] Health Check /rag/health: PASS (0.001s)
+[2026-02-25 12:14:24] App Switching talentops: PASS (Available: True)
+[2026-02-25 12:14:24] App Switching cohort: PASS (Available: True)
+[2026-02-25 12:14:24] Running Performance Benchmarks...
+[2026-02-25 12:14:24] Starting Load Test with 10 concurrent users...
+[2026-02-25 12:14:42] Load Test (10 users): Avg 10.157s, P95 18.245s, Errors 0
+[2026-02-25 12:14:42] Starting Load Test with 50 concurrent users...
+[2026-02-25 12:15:02] Load Test (50 users): Avg 10.916s, P95 20.196s, Errors 38
+[2026-02-25 12:15:02] Starting Load Test with 100 concurrent users...
+[2026-02-25 12:15:23] Load Test (100 users): Avg 0.000s, P95 0.000s, Errors 100
+[2026-02-25 12:15:23] Starting Stress & Edge Case Testing...
+[2026-02-25 12:15:44] All tests completed.[2026-02-25T12:15:45.563972] SLM Request: Total=2.275s, TTFT=0.418s, Gen=1.456s, TPS=71.42, Status=success
+[2026-02-25T12:15:47.314062] SLM Request: Total=1.738s, TTFT=0.402s, Gen=0.800s, TPS=132.48, Status=success
+[2026-02-25T12:15:48.917893] SLM Request: Total=1.598s, TTFT=0.360s, Gen=0.742s, TPS=142.93, Status=success
+[2026-02-25T12:15:51.132926] SLM Request: Total=2.212s, TTFT=0.424s, Gen=1.216s, TPS=53.46, Status=success
+[2026-02-25T12:15:52.646305] SLM Request: Total=1.510s, TTFT=0.449s, Gen=0.721s, TPS=147.05, Status=success
+[2026-02-25T12:15:54.709010] SLM Request: Total=2.061s, TTFT=0.638s, Gen=1.330s, TPS=78.98, Status=success
+[2026-02-25T12:15:56.616300] SLM Request: Total=1.906s, TTFT=0.452s, Gen=1.145s, TPS=60.25, Status=success
+[2026-02-25T12:15:58.121645] SLM Request: Total=1.503s, TTFT=0.376s, Gen=0.772s, TPS=137.35, Status=success
+[2026-02-25T12:15:59.604426] SLM Request: Total=1.479s, TTFT=0.362s, Gen=0.686s, TPS=154.45, Status=success
+[2026-02-25T12:16:01.528200] SLM Request: Total=1.922s, TTFT=0.405s, Gen=0.956s, TPS=110.93, Status=success
+[2026-02-25T12:16:03.482704] SLM Request: Total=1.948s, TTFT=0.546s, Gen=1.207s, TPS=87.01, Status=success
+[2026-02-25T12:16:05.567429] SLM Request: Total=2.079s, TTFT=0.489s, Gen=1.293s, TPS=111.39, Status=success
+[2026-02-25T12:16:07.407589] SLM Request: Total=1.835s, TTFT=0.349s, Gen=0.761s, TPS=139.26, Status=success
+[2026-02-25T12:16:09.023801] SLM Request: Total=1.614s, TTFT=0.389s, Gen=0.763s, TPS=138.93, Status=success
+[2026-02-25T12:16:10.663986] SLM Request: Total=1.635s, TTFT=0.434s, Gen=0.697s, TPS=152.03, Status=success
+[2026-02-25T12:16:12.645405] SLM Request: Total=1.977s, TTFT=0.520s, Gen=1.277s, TPS=125.32, Status=success
+[2026-02-25T12:16:14.352354] SLM Request: Total=1.687s, TTFT=0.519s, Gen=0.974s, TPS=108.88, Status=success
+[2026-02-25T12:16:16.060285] SLM Request: Total=1.703s, TTFT=0.409s, Gen=0.839s, TPS=126.28, Status=success
+[2026-02-25T12:16:17.570570] SLM Request: Total=1.504s, TTFT=0.405s, Gen=0.811s, TPS=130.72, Status=success
+[2026-02-25T12:16:19.206636] SLM Request: Total=1.631s, TTFT=0.515s, Gen=0.923s, TPS=114.82, Status=success
+[2026-02-25T12:16:20.926172] SLM Request: Total=1.716s, TTFT=0.331s, Gen=0.898s, TPS=118.04, Status=success
+[2026-02-25T12:16:22.547118] SLM Request: Total=1.615s, TTFT=0.374s, Gen=0.840s, TPS=110.65, Status=success
+[2026-02-25T12:16:24.234521] SLM Request: Total=1.682s, TTFT=0.378s, Gen=0.918s, TPS=116.55, Status=success
+[2026-02-25T12:16:25.668967] SLM Request: Total=1.430s, TTFT=0.362s, Gen=0.689s, TPS=153.88, Status=success
+[2026-02-25T12:16:27.114537] SLM Request: Total=1.444s, TTFT=0.422s, Gen=0.754s, TPS=140.51, Status=success
+[2026-02-25T12:16:28.612551] SLM Request: Total=1.496s, TTFT=0.429s, Gen=0.770s, TPS=137.71, Status=success
+[2026-02-25T12:16:30.001704] SLM Request: Total=1.387s, TTFT=0.399s, Gen=0.689s, TPS=153.75, Status=success
+[2026-02-25T12:16:31.646333] SLM Request: Total=1.643s, TTFT=0.390s, Gen=0.938s, TPS=93.85, Status=success
+[2026-02-25T12:16:33.214255] SLM Request: Total=1.565s, TTFT=0.451s, Gen=0.840s, TPS=126.22, Status=success
+[2026-02-25T12:16:35.311650] SLM Request: Total=2.091s, TTFT=0.622s, Gen=1.264s, TPS=111.59, Status=success
+[2026-02-25T12:16:37.258320] SLM Request: Total=1.943s, TTFT=0.510s, Gen=1.258s, TPS=84.25, Status=success
+[2026-02-25T12:16:39.302411] SLM Request: Total=2.041s, TTFT=0.711s, Gen=1.249s, TPS=122.47, Status=success
+[2026-02-25T12:16:40.757954] SLM Request: Total=1.454s, TTFT=0.454s, Gen=0.706s, TPS=150.10, Status=success
+[2026-02-25T12:16:42.373803] SLM Request: Total=1.613s, TTFT=0.429s, Gen=0.821s, TPS=84.01, Status=success
+[2026-02-25T12:16:44.152283] SLM Request: Total=1.773s, TTFT=0.377s, Gen=0.963s, TPS=144.31, Status=success
+[2026-02-25T12:16:45.618044] SLM Request: Total=1.462s, TTFT=0.383s, Gen=0.684s, TPS=154.98, Status=success
+[2026-02-25T12:16:47.279641] SLM Request: Total=1.658s, TTFT=0.398s, Gen=0.714s, TPS=148.49, Status=success
+[2026-02-25T12:16:48.884860] SLM Request: Total=1.597s, TTFT=0.376s, Gen=0.668s, TPS=158.70, Status=success
+[2026-02-25T12:16:50.306802] SLM Request: Total=1.417s, TTFT=0.386s, Gen=0.663s, TPS=159.96, Status=success
+[2026-02-25T12:16:51.917022] SLM Request: Total=1.608s, TTFT=0.538s, Gen=0.890s, TPS=77.50, Status=success
+[2026-02-25T12:16:53.475463] SLM Request: Total=1.557s, TTFT=0.411s, Gen=0.759s, TPS=123.92, Status=success
+[2026-02-25T12:16:54.968578] SLM Request: Total=1.487s, TTFT=0.396s, Gen=0.760s, TPS=139.43, Status=success
+[2026-02-25T12:16:56.489649] SLM Request: Total=1.516s, TTFT=0.371s, Gen=0.728s, TPS=145.54, Status=success
+[2026-02-25T12:16:58.687055] SLM Request: Total=2.192s, TTFT=0.586s, Gen=1.255s, TPS=51.80, Status=success
+[2026-02-25T12:17:00.969357] SLM Request: Total=2.277s, TTFT=0.505s, Gen=1.204s, TPS=93.03, Status=success
+[2026-02-25T12:17:02.531545] SLM Request: Total=1.555s, TTFT=0.402s, Gen=0.720s, TPS=147.24, Status=success
+[2026-02-25T12:17:04.570820] SLM Request: Total=2.034s, TTFT=0.456s, Gen=1.070s, TPS=98.12, Status=success
+[2026-02-25T12:17:06.115197] SLM Request: Total=1.538s, TTFT=0.350s, Gen=0.710s, TPS=149.30, Status=success
+[2026-02-25T12:17:07.782327] SLM Request: Total=1.664s, TTFT=0.457s, Gen=0.848s, TPS=76.70, Status=success
+[2026-02-25T12:17:09.528302] SLM Request: Total=1.740s, TTFT=0.405s, Gen=0.962s, TPS=110.20, Status=success
+[2026-02-25T12:17:11.419398] SLM Request: Total=1.885s, TTFT=0.396s, Gen=0.808s, TPS=131.26, Status=success
+[2026-02-25T12:17:13.174045] SLM Request: Total=1.748s, TTFT=0.383s, Gen=0.914s, TPS=115.95, Status=success
+[2026-02-25T12:17:15.194733] SLM Request: Total=2.015s, TTFT=0.486s, Gen=1.281s, TPS=81.97, Status=success
+[2026-02-25T12:17:16.991971] SLM Request: Total=1.790s, TTFT=0.573s, Gen=1.014s, TPS=104.54, Status=success
+[2026-02-25T12:17:18.596657] SLM Request: Total=1.602s, TTFT=0.367s, Gen=0.728s, TPS=145.65, Status=success
+[2026-02-25T12:17:20.419979] SLM Request: Total=1.820s, TTFT=0.437s, Gen=0.988s, TPS=107.31, Status=success
+[2026-02-25T12:17:22.734985] SLM Request: Total=2.309s, TTFT=0.990s, Gen=1.370s, TPS=77.37, Status=success
+[2026-02-25T12:17:24.966496] SLM Request: Total=2.230s, TTFT=0.456s, Gen=1.383s, TPS=73.77, Status=success
+[2026-02-25T12:17:26.501997] SLM Request: Total=1.529s, TTFT=0.375s, Gen=0.745s, TPS=142.21, Status=success
+[2026-02-25T12:17:28.265466] SLM Request: Total=1.758s, TTFT=0.459s, Gen=1.062s, TPS=114.91, Status=success
+[2026-02-25T12:17:30.021943] SLM Request: Total=1.754s, TTFT=0.392s, Gen=0.860s, TPS=118.59, Status=success
+[2026-02-25T12:17:32.025474] SLM Request: Total=1.996s, TTFT=0.663s, Gen=1.187s, TPS=103.61, Status=success
+[2026-02-25T12:17:33.533147] SLM Request: Total=1.504s, TTFT=0.368s, Gen=0.690s, TPS=153.56, Status=success
+[2026-02-25T12:17:35.589011] SLM Request: Total=2.050s, TTFT=0.565s, Gen=1.275s, TPS=127.11, Status=success
+[2026-02-25T12:17:37.293088] SLM Request: Total=1.700s, TTFT=0.504s, Gen=0.970s, TPS=109.26, Status=success
+[2026-02-25T12:17:39.312366] SLM Request: Total=2.011s, TTFT=0.451s, Gen=1.034s, TPS=74.45, Status=success
+[2026-02-25T12:17:40.721258] SLM Request: Total=1.405s, TTFT=0.516s, Gen=0.723s, TPS=146.70, Status=success
+[2026-02-25T12:17:42.666592] SLM Request: Total=1.936s, TTFT=0.483s, Gen=1.124s, TPS=77.43, Status=success
+[2026-02-25T12:17:44.317345] SLM Request: Total=1.645s, TTFT=0.421s, Gen=0.924s, TPS=114.67, Status=success
+[2026-02-25T12:17:46.230919] SLM Request: Total=1.909s, TTFT=0.413s, Gen=0.843s, TPS=125.74, Status=success
+[2026-02-25T12:17:47.850412] SLM Request: Total=1.614s, TTFT=0.520s, Gen=0.792s, TPS=133.88, Status=success
+[2026-02-25T12:17:49.997207] SLM Request: Total=2.141s, TTFT=0.616s, Gen=1.296s, TPS=74.84, Status=success
+[2026-02-25T12:17:51.659179] SLM Request: Total=1.655s, TTFT=0.416s, Gen=0.899s, TPS=117.87, Status=success
+[2026-02-25T12:17:53.204916] SLM Request: Total=1.537s, TTFT=0.390s, Gen=0.693s, TPS=152.94, Status=success
+[2026-02-25T12:17:54.714897] SLM Request: Total=1.504s, TTFT=0.378s, Gen=0.751s, TPS=141.18, Status=success
+[2026-02-25T12:17:56.685472] SLM Request: Total=1.964s, TTFT=0.407s, Gen=1.241s, TPS=84.61, Status=success
+[2026-02-25T12:17:58.539078] SLM Request: Total=1.845s, TTFT=0.513s, Gen=1.094s, TPS=98.75, Status=success
+[2026-02-25T12:18:00.076163] SLM Request: Total=1.527s, TTFT=0.354s, Gen=0.837s, TPS=102.70, Status=success
+[2026-02-25T12:18:01.663084] SLM Request: Total=1.585s, TTFT=0.381s, Gen=0.893s, TPS=118.71, Status=success
+[2026-02-25T12:18:03.232534] SLM Request: Total=1.563s, TTFT=0.394s, Gen=0.827s, TPS=128.13, Status=success
+[2026-02-25T12:18:05.318430] SLM Request: Total=2.081s, TTFT=0.371s, Gen=1.145s, TPS=87.37, Status=success
+[2026-02-25T12:18:07.214774] SLM Request: Total=1.887s, TTFT=0.376s, Gen=0.951s, TPS=111.50, Status=success
+[2026-02-25T12:18:09.190564] SLM Request: Total=1.966s, TTFT=0.492s, Gen=1.113s, TPS=110.56, Status=success
+[2026-02-25T12:18:10.821583] SLM Request: Total=1.624s, TTFT=0.386s, Gen=0.795s, TPS=133.41, Status=success
+[2026-02-25T12:18:12.463362] SLM Request: Total=1.631s, TTFT=0.395s, Gen=0.802s, TPS=132.13, Status=success
+[2026-02-25T12:18:14.339622] SLM Request: Total=1.868s, TTFT=0.498s, Gen=1.148s, TPS=96.72, Status=success
+[2026-02-25T12:18:16.341190] SLM Request: Total=1.994s, TTFT=0.498s, Gen=1.202s, TPS=89.87, Status=success
+[2026-02-25T12:18:18.019985] SLM Request: Total=1.675s, TTFT=0.443s, Gen=0.778s, TPS=136.27, Status=success
+[2026-02-25T12:18:19.779183] SLM Request: Total=1.757s, TTFT=0.423s, Gen=0.983s, TPS=116.03, Status=success
+[2026-02-25T12:18:21.526156] SLM Request: Total=1.744s, TTFT=0.400s, Gen=0.962s, TPS=110.22, Status=success
+[2026-02-25T12:18:23.183532] SLM Request: Total=1.653s, TTFT=0.413s, Gen=0.898s, TPS=113.59, Status=success
+[2026-02-25T12:18:24.983895] SLM Request: Total=1.796s, TTFT=0.428s, Gen=0.970s, TPS=71.15, Status=success
+[2026-02-25T12:18:26.352519] SLM Request: Total=1.362s, TTFT=0.416s, Gen=0.683s, TPS=155.27, Status=success
+[2026-02-25T12:18:27.867372] SLM Request: Total=1.513s, TTFT=0.391s, Gen=0.821s, TPS=129.14, Status=success
+[2026-02-25T12:18:29.428676] SLM Request: Total=1.559s, TTFT=0.352s, Gen=0.678s, TPS=156.40, Status=success
+[2026-02-25T12:18:31.303821] SLM Request: Total=1.863s, TTFT=0.483s, Gen=0.790s, TPS=108.89, Status=success
+[2026-02-25T12:18:32.800346] SLM Request: Total=1.491s, TTFT=0.413s, Gen=0.683s, TPS=155.31, Status=success
+[2026-02-25T12:18:34.418287] SLM Request: Total=1.615s, TTFT=0.440s, Gen=0.868s, TPS=122.13, Status=success
+[2026-02-25T12:18:36.365103] SLM Request: Total=1.937s, TTFT=0.461s, Gen=1.146s, TPS=95.13, Status=success
+[2026-02-25T12:18:38.095474] SLM Request: Total=1.726s, TTFT=0.388s, Gen=1.037s, TPS=102.21, Status=success
+[2026-02-25T12:18:39.529937] SLM Request: Total=1.429s, TTFT=0.365s, Gen=0.751s, TPS=141.21, Status=success
+[2026-02-25T12:18:40.962533] SLM Request: Total=1.430s, TTFT=0.387s, Gen=0.713s, TPS=148.57, Status=success
+[2026-02-25T12:18:42.423264] SLM Request: Total=1.457s, TTFT=0.384s, Gen=0.772s, TPS=137.29, Status=success
+[2026-02-25T12:18:43.861979] SLM Request: Total=1.437s, TTFT=0.364s, Gen=0.695s, TPS=152.41, Status=success
+[2026-02-25T12:18:45.547674] SLM Request: Total=1.674s, TTFT=0.445s, Gen=0.812s, TPS=130.57, Status=success
+[2026-02-25T12:18:46.921896] SLM Request: Total=1.369s, TTFT=0.365s, Gen=0.708s, TPS=149.68, Status=success
+[2026-02-25T12:18:48.349407] SLM Request: Total=1.425s, TTFT=0.396s, Gen=0.717s, TPS=119.87, Status=success
+[2026-02-25T12:18:49.729089] SLM Request: Total=1.375s, TTFT=0.374s, Gen=0.705s, TPS=92.14, Status=success
+[2026-02-25T12:18:51.784570] SLM Request: Total=2.045s, TTFT=0.413s, Gen=1.029s, TPS=102.99, Status=success
+[2026-02-25T12:18:53.200830] SLM Request: Total=1.413s, TTFT=0.349s, Gen=0.731s, TPS=145.01, Status=success
+[2026-02-25T12:18:55.101233] SLM Request: Total=1.895s, TTFT=0.498s, Gen=1.014s, TPS=107.45, Status=success
+[2026-02-25T12:18:56.633281] SLM Request: Total=1.528s, TTFT=0.386s, Gen=0.772s, TPS=137.29, Status=success
+[2026-02-25T12:18:58.517369] SLM Request: Total=1.879s, TTFT=0.513s, Gen=1.101s, TPS=89.00, Status=success
+[2026-02-25T12:19:00.768126] SLM Request: Total=2.242s, TTFT=0.398s, Gen=0.873s, TPS=74.44, Status=success
+[2026-02-25T12:19:02.509173] SLM Request: Total=1.730s, TTFT=0.376s, Gen=0.978s, TPS=107.37, Status=success
+[2026-02-25T12:19:03.948161] SLM Request: Total=1.437s, TTFT=0.395s, Gen=0.683s, TPS=155.15, Status=success
+[2026-02-25T12:19:05.607862] SLM Request: Total=1.652s, TTFT=0.413s, Gen=0.926s, TPS=114.46, Status=success
+[2026-02-25T12:19:07.257685] LLM Request: Total=1.639s, TTFT=0.713s, Gen=0.926s, TPS=46.45, Status=success
+[2026-02-25T12:19:09.779225] RAG Request: Total=1.312s, TTFT=0.412s, Gen=0.672s, TPS=104.14, Status=success
+[2026-02-25T12:19:11.195400] LLM Request: Total=1.407s, TTFT=0.494s, Gen=0.914s, TPS=48.15, Status=success
+[2026-02-25T12:19:12.816019] RAG Request: Total=1.617s, TTFT=0.356s, Gen=0.970s, TPS=131.89, Status=success
+[2026-02-25T15:26:38.471736] SLM Request: Total=2.579s, TTFT=0.464s, Gen=1.354s, TPS=129.28, Status=success
+[2026-02-25T15:28:01.359417] SLM Request: Total=2.557s, TTFT=0.406s, Gen=1.040s, TPS=125.00, Status=success
+[2026-02-25T15:28:43.239122] SLM Request: Total=2.331s, TTFT=0.422s, Gen=0.926s, TPS=104.76, Status=success
+[2026-02-25T15:30:20.872157] SLM Request: Total=1.867s, TTFT=0.355s, Gen=0.750s, TPS=138.65, Status=success

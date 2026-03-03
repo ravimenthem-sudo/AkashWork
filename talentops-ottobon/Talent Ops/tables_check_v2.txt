@@ -1,0 +1,25 @@
+--- Checking Attendance & Leave Tables ---
+
+Checking table: attendance_logs
+  ❌ Error/Missing: Could not find the table 'public.attendance_logs' in the schema cache (PGRST205)
+
+Checking table: attendance
+  ✅ Table exists.
+  Table is empty but exists.
+
+Checking table: leave_requests
+  ❌ Error/Missing: Could not find the table 'public.leave_requests' in the schema cache (PGRST205)
+
+Checking table: leaves
+  ✅ Table exists.
+  Columns: id, employee_id, team_id, from_date, to_date, reason, status, org_id, created_at, lop_days, duration_weekdays
+
+Checking table: leave_balances
+  ❌ Error/Missing: Could not find the table 'public.leave_balances' in the schema cache (PGRST205)
+
+Checking table: user_leaves
+  ❌ Error/Missing: Could not find the table 'public.user_leaves' in the schema cache (PGRST205)
+
+Checking table: profiles
+  ✅ Table exists.
+  Columns: id, full_name, email, role, team_id, created_at, monthly_leave_quota, leaves_taken_this_month, leaves_remaining_this_month, phone, location, join_date, avatar_url, employment_type, notice_period_end, last_working_day, job_title, department, org_id, is_hidden, employee_stage, functional_track, total_leaves_balance, technical_scores

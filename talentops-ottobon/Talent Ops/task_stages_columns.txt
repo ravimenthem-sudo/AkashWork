@@ -1,0 +1,1 @@
+✅ Table task_stages exists. Columns from error: null value in column "task_id" of relation "task_stages" violates not-null constraint
