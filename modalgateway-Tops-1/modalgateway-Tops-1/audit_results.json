@@ -1,38 +1,5 @@
 [
   {
-    "id": "4a51a562-4e41-4537-9728-ada54229c28a",
-    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
-    "project_id": null,
-    "title": "Proxy Test",
-    "source": null,
-    "created_at": "2026-03-22T15:44:08.108485+00:00",
-    "task_id": null,
-    "phase": null,
-    "chunk_count": 1
-  },
-  {
-    "id": "3a0e0fce-0f74-48e4-a356-1225b0bb8372",
-    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
-    "project_id": null,
-    "title": "Proxy Test",
-    "source": null,
-    "created_at": "2026-03-22T15:44:16.0211+00:00",
-    "task_id": null,
-    "phase": null,
-    "chunk_count": 1
-  },
-  {
-    "id": "e1f7c1bd-d61f-45f3-9de3-1d9039ea4470",
-    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
-    "project_id": null,
-    "title": "Proxy Test",
-    "source": null,
-    "created_at": "2026-03-22T15:44:18.165719+00:00",
-    "task_id": null,
-    "phase": null,
-    "chunk_count": 1
-  },
-  {
     "id": "2120e64d-e92d-41b6-954e-180351cb7041",
     "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
     "project_id": "833ab297-c466-41f2-8e10-be550787e220",
@@ -154,9 +121,42 @@
     "chunk_count": 91
   },
   {
+    "id": "4a51a562-4e41-4537-9728-ada54229c28a",
+    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
+    "project_id": "833ab297-c466-41f2-8e10-be550787e220",
+    "title": "Proxy Test",
+    "source": null,
+    "created_at": "2026-03-22T15:44:08.108485+00:00",
+    "task_id": null,
+    "phase": null,
+    "chunk_count": 1
+  },
+  {
+    "id": "3a0e0fce-0f74-48e4-a356-1225b0bb8372",
+    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
+    "project_id": "833ab297-c466-41f2-8e10-be550787e220",
+    "title": "Proxy Test",
+    "source": null,
+    "created_at": "2026-03-22T15:44:16.0211+00:00",
+    "task_id": null,
+    "phase": null,
+    "chunk_count": 1
+  },
+  {
+    "id": "e1f7c1bd-d61f-45f3-9de3-1d9039ea4470",
+    "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
+    "project_id": "833ab297-c466-41f2-8e10-be550787e220",
+    "title": "Proxy Test",
+    "source": null,
+    "created_at": "2026-03-22T15:44:18.165719+00:00",
+    "task_id": null,
+    "phase": null,
+    "chunk_count": 1
+  },
+  {
     "id": "0f4124fb-43f3-4a68-9042-7ba7fd442404",
     "org_id": "dde0a075-5eb3-4b4b-8de3-0a6b1162951f",
-    "project_id": "833ab297-26fb-4c33-a90d-92a6cf3e76f5",
+    "project_id": "833ab297-c466-41f2-8e10-be550787e220",
     "title": "wide retrieval rag strategy",
     "source": null,
     "created_at": "2026-03-23T05:19:51.458092+00:00",

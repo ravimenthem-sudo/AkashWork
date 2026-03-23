@@ -831,7 +831,7 @@ async def slm_chat(request: SLMQueryRequest, background_tasks: BackgroundTasks):
         data_context = ""
         
         # --- REAL DATABASE ACTIONS (MUTATIONS) ---
-        mutations = ["clock_in", "clock_out", "apply_leave", "approve_leave", "reject_leave", "post_announcement", "assign_task", "update_task_status", "create_event", "update_event", "delete_event"]
+        mutations = ["clock_in", "clock_out", "apply_leave", "approve_leave", "reject_leave", "post_announcement", "assign_task", "update_task_status", "create_event", "update_event", "delete_event", "delete_task"]
         
         if action in mutations:
             # --- DIRECT EXECUTION (Updated per User Request) ---
@@ -1082,6 +1082,36 @@ async def slm_chat(request: SLMQueryRequest, background_tasks: BackgroundTasks):
                         data_context = f"SUCCESS: Event '{event_title or event_id}' deleted."
                     elif res:
                         data_context = f"ERROR: Failed to delete event '{event_title or event_id}'. It might not exist or you lack permissions."
+
+                elif action == "delete_task":
+                    task_id = params.get("task_id")
+                    task_title = params.get("title") or params.get("task_name")
+                    
+                    if not task_id and task_title:
+                        # Find task by title
+                        find_res = await supabase.table("tasks").select("id, title").ilike("title", f"%{task_title}%").eq("org_id", request.org_id).execute()
+                        if find_res.data:
+                            task_id = find_res.data[0]["id"]
+                            task_title = find_res.data[0]["title"]
+                        else:
+                            data_context = f"ERROR: Could not find any task matching '{task_title}' to delete."
+                            task_id = None
+
+                    if task_id:
+                        logger.info(f"🗑️ CASCADING DELETE for Task {task_id}")
+                        # 1. Delete Chunks
+                        await supabase.table("document_chunks").delete().eq("task_id", task_id).execute()
+                        # 2. Delete Documents
+                        await supabase.table("documents").delete().eq("task_id", task_id).execute()
+                        # 3. Delete Task
+                        res = await supabase.table("tasks").delete().eq("id", task_id).execute()
+                        
+                        if res.data:
+                            data_context = f"SUCCESS: Task '{task_title or task_id}' and all associated documents/chunks have been deleted."
+                        else:
+                            data_context = f"ERROR: Failed to delete task '{task_title or task_id}'."
+                    elif not data_context:
+                        data_context = "ERROR: No task ID or title provided for deletion."
                 
             except Exception as e:
                 logger.error(f"Error performing {action}: {e}")
@@ -2409,12 +2439,14 @@ async def rag_ingest(request: RAGIngestRequest):
         if not org_id or not is_valid_uuid(org_id):
             return {"success": False, "message": "Missing or invalid org_id (must be UUID)"}
             
-        # --- [STRICT MODE] Project ID Security Check --- 
-        source = request.metadata.get("source", "document")
-        if not project_id and source != "policy":
-             logger.warning(f"⚠️ SECURITY WARNING: Ingesting '{doc_id}' without project_id. This will make it a GLOBAL document.")
-             # We allow it for now but log it prominently. In a production environment, we might block it.
-             # return {"success": False, "message": "Missing project_id for non-policy document"}
+        # --- [STRICT MODE] Project ID Security Check (Requirement 0 Enforcement) --- 
+        source = str(request.metadata.get("source", "document")).lower()
+        if not project_id and source != "policy" and not "policy" in str(request.metadata.get("title", "")).lower():
+             logger.error(f"❌ INGESTION BLOCKED: Missing project_id for non-policy document '{doc_id}'")
+             return {
+                 "success": False, 
+                 "message": "Security Error: Missing project_id. Project-specific documents must be tagged with a valid Project ID."
+             }
         
         # 1. Extract text from URL if provided
         file_text = ""
@@ -2613,24 +2645,44 @@ async def rag_query(request: RAGQueryRequest):
                 logger.info(f"✅ Vector Search fallback complete ({len(final_matches)} chunks)")
 
         # 4. Final Processing (Formatting)
-        # Build inventory excluding task-specific docs (they are private to tasks)
+        # Separate inventory into Policies and Project Docs for clearer LLM reasoning
         has_task_context = bool(request.task_id)
-        inventory_docs = []
+        policies = []
+        project_docs = []
+        task_docs = []
+        
         req_proj = str(request.project_id or "").lower().strip()
         for d in all_docs:
+            title = d.get('title', 'Unknown')
             is_task_doc = bool(d.get('task_id'))
             d_proj = str(d.get('project_id') or "").lower().strip()
+            source = str(d.get('source') or "").lower()
+            is_policy = (source == 'policy') or ('policy' in title.lower() and 'proxy' not in title.lower())
             
             if is_task_doc:
                 if has_task_context and d.get('task_id') == request.task_id:
-                    inventory_docs.append(d.get('title'))
-            else:
-                if not d.get('project_id') or d_proj == req_proj:
-                    inventory_docs.append(d.get('title'))
-        inventory_items = sorted(list(set(inventory_docs)))
-        inventory_text = f"INVENTORY OF ACCESSIBLE DOCUMENTS (Total: {len(inventory_items)}):\n"
-        for i, t in enumerate(inventory_items):
-            inventory_text += f"{i+1}. {t}\n"
+                    task_docs.append(title)
+            elif is_policy:
+                policies.append(title)
+            elif d.get('project_id') and d_proj == req_proj:
+                project_docs.append(title)
+        
+        # Build categorized inventory
+        inventory_text = "### ACCESSIBLE KNOWLEDGE REPOSITORY\n"
+        if policies:
+            inventory_text += f"\nCOMPANY POLICIES (Total: {len(policies)}):\n"
+            for i, p in enumerate(sorted(list(set(policies)))):
+                inventory_text += f"  {i+1}. {p}\n"
+        
+        if project_docs:
+            inventory_text += f"\nPROJECT DOCUMENTS (Current Project: {len(project_docs)}):\n"
+            for i, pd in enumerate(sorted(list(set(project_docs)))):
+                inventory_text += f"  {i+1}. {pd}\n"
+                
+        if task_docs:
+            inventory_text += f"\nTASK-SPECIFIC GUIDANCE (Total: {len(task_docs)}):\n"
+            for i, td in enumerate(sorted(list(set(task_docs)))):
+                inventory_text += f"  {i+1}. {td}\n"
         
         context_text = inventory_text + "\n"
         unique_sources = []
