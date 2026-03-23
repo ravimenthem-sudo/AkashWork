@@ -129,12 +129,14 @@ RBAC_RULES = {
         "get_tasks", "update_task_status", 
         "get_attendance", "clock_in", "clock_out", 
         "get_leave_balance", "apply_leave", 
+        "get_project_documents",
         "chat", "greeting", "navigate_to_module"
     ],
     "team_lead": [
         "get_tasks", "update_task_status", "assign_task", 
         "get_attendance", "clock_in", "clock_out", 
         "get_leave_balance", "apply_leave", "get_pending_leaves", "approve_leave", "reject_leave", 
+        "get_project_documents",
         "chat", "greeting", "navigate_to_module"
     ],
     "manager": [

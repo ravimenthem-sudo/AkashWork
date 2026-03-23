@@ -6,6 +6,7 @@ class SLMQueryRequest(BaseModel):
     user_id: str
     user_role: str = "employee"
     project_id: Optional[str] = None
+    task_id: Optional[str] = None # NEW
     org_id: Optional[str] = None
     team_id: Optional[str] = None
     context: Optional[Dict[str, Any]] = None
@@ -49,6 +50,8 @@ class RAGIngestRequest(BaseModel):
     user_id: Optional[str] = None # Added for privacy
     org_id: Optional[str] = None
     project_id: Optional[str] = None
+    task_id: Optional[str] = None # NEW
+    phase: Optional[str] = None   # NEW
     text: Optional[str] = ""
     file_url: Optional[str] = None
     metadata: Dict[str, Any] = {}
@@ -59,4 +62,7 @@ class RAGQueryRequest(BaseModel):
     user_id: Optional[str] = None # Added for privacy
     org_id: Optional[str] = None
     project_id: Optional[str] = None
+    task_id: Optional[str] = None # NEW
     app_name: Optional[str] = "talentops"
+    target_doc_id: Optional[str] = None
+    target_doc_title: Optional[str] = None

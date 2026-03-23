@@ -1,0 +1,23 @@
+--- DOCUMENT INGESTION AUDIT REPORT ---
+TITLE                                    | UPLOADED AT               | STATUS               | CHUNKS
+--------------------------------------------------------------------------------------------------------------
+RAGTEST                                  | 2026-03-12T12:31:10.320894+00:00 | ✅ PROCESSED          | 9 chunks
+wizard setup doc                         | 2026-03-09T05:54:04.486528+00:00 | ✅ PROCESSED          | 3 chunks
+talentops architectcure                  | 2026-03-09T05:31:35.016575+00:00 | ✅ PROCESSED          | 10 chunks
+tops pdf                                 | 2026-03-05T12:02:48.337294+00:00 | ❌ NOT PROCESSED      | N/A
+Slide show explaining the task Flow      | 2026-02-13T07:48:27.532379+00:00 | ❌ NOT PROCESSED      | N/A
+Tasks Flow                               | 2026-02-13T07:47:26.35796+00:00 | ❌ NOT PROCESSED      | N/A
+Database Integrity Checklist             | 2026-02-13T07:46:51.6114+00:00 | ❌ NOT PROCESSED      | N/A
+Janmasethu Database Issues               | 2026-02-10T11:02:11.346669+00:00 | ❌ NOT PROCESSED      | N/A
+Course Platform Database Issues          | 2026-02-10T11:01:28.012545+00:00 | ❌ NOT PROCESSED      | N/A
+Talent Ops Database Issues               | 2026-02-10T11:00:56.471789+00:00 | ❌ NOT PROCESSED      | N/A
+Sprint Document  10-02-2026              | 2026-02-10T11:00:02.269568+00:00 | ❌ NOT PROCESSED      | N/A
+Talent Ops Blockers                      | 2026-02-09T18:16:39.777419+00:00 | ❌ NOT PROCESSED      | N/A
+Course Platform Blockers                 | 2026-02-09T18:16:14.612453+00:00 | ❌ NOT PROCESSED      | N/A
+Janmasethu Blockers                      | 2026-02-09T18:15:37.941692+00:00 | ❌ NOT PROCESSED      | N/A
+SLM Test Doc                             | 2026-01-07T11:24:47.331622+00:00 | ✅ PROCESSED          | 4 chunks
+Full Document                            | 2026-01-07T03:55:18.111129+00:00 | ✅ PROCESSED          | 3 chunks
+RAG Document                             | 2026-01-07T03:53:12.908137+00:00 | ✅ PROCESSED          | 1 chunks
+LLM Document                             | 2026-01-07T03:52:45.594436+00:00 | ✅ PROCESSED          | 1 chunks
+SLM Doc                                  | 2026-01-07T03:52:11.082185+00:00 | ✅ PROCESSED          | 1 chunks
+AI Native Full-Stack Developer Course Material | 2026-01-06T12:36:15.469989+00:00 | ✅ PROCESSED          | 91 chunks

@@ -85,6 +85,10 @@ class SimpleSupabaseQuery:
         self.headers["Prefer"] = "return=representation"
         return self
 
+    def delete(self):
+        self.method = "DELETE"
+        return self
+
     async def execute(self):
         try:
             async with httpx.AsyncClient(timeout=10) as client:
@@ -94,6 +98,8 @@ class SimpleSupabaseQuery:
                     resp = await client.post(self.url, headers=self.headers, json=self.json_data, params=self.params)
                 elif self.method == "PATCH":
                     resp = await client.patch(self.url, headers=self.headers, json=self.json_data, params=self.params)
+                elif self.method == "DELETE":
+                    resp = await client.delete(self.url, headers=self.headers, params=self.params)
                 
                 if resp.status_code >= 400:
                     try:

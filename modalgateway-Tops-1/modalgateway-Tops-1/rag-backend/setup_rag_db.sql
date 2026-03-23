@@ -59,8 +59,10 @@ begin
   where 1 - (document_chunks.embedding <=> query_embedding) > match_threshold
   -- Filter by org_id (required)
   and document_chunks.org_id = (filter->>'org_id')::uuid
-  -- Filter by project_id (optional)
+  -- Filter by project_id (allow global docs with NULL project_id)
   and (
+      document_chunks.project_id is null 
+      or 
       (filter->>'project_id') is null 
       or 
       document_chunks.project_id = (filter->>'project_id')::uuid

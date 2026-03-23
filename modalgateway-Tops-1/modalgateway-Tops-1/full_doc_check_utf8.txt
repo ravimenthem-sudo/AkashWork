@@ -1,0 +1,52 @@
+﻿USER PROFILE: None (ID=None)
+  Profile Org ID: None
+--------------------------------------------------
+ORGS IN DOCUMENTS TABLE:
+  dde0a075-5eb3-4b4b-8de3-0a6b1162951f: 21 documents
+--------------------------------------------------
+
+[FOUND] 'RAGTEST'
+  Doc ID:     42ddfe90-e9fd-43b3-abb2-075639244f4e
+  Org ID:     dde0a075-5eb3-4b4b-8de3-0a6b1162951f
+  Proj ID:    833ab297-26fb-4c33-a90d-92a6cf3e76f5
+  Chunks:     9
+  ΓÜá∩╕Å MISMATCH: This document belongs to Org dde0a075-5eb3-4b4b-8de3-0a6b1162951f, but user is in Org None
+  Chunk 0: (912 chars) primary keys, foreign key constraints, and default values. CREATE TABLE IF NOT EXISTS project_documents ( id UUID PRIMAR...
+  Chunk 1: (2218 chars) TalentOps Backend System: Data Architecture & Design
+Document Control
+--------------------------------------------------...
+  Chunk 2: (2176 chars) strengths of structured relational data in PostgreSQL with unstructured vector data in ChromaDB. This is a strategic dec...
+
+[FOUND] 'LLM Document '
+  Doc ID:     b01fd21a-5a0d-463b-8537-7b334c079821
+  Org ID:     dde0a075-5eb3-4b4b-8de3-0a6b1162951f
+  Proj ID:    833ab297-26fb-4c33-a90d-92a6cf3e76f5
+  Chunks:     1
+  ΓÜá∩╕Å MISMATCH: This document belongs to Org dde0a075-5eb3-4b4b-8de3-0a6b1162951f, but user is in Org None
+  Chunk 0: (1306 chars) LLM ΓÇô Intelligence, Reasoning & Explanation Layer LLM Role in the System  Acts as the intelligence and reasoning brain....
+
+[FOUND] 'RAG Document '
+  Doc ID:     add7ac80-bdcb-41f0-8bf0-a57f5941baaf
+  Org ID:     dde0a075-5eb3-4b4b-8de3-0a6b1162951f
+  Proj ID:    833ab297-26fb-4c33-a90d-92a6cf3e76f5
+  Chunks:     1
+  ΓÜá∩╕Å MISMATCH: This document belongs to Org dde0a075-5eb3-4b4b-8de3-0a6b1162951f, but user is in Org None
+  Chunk 0: (1026 chars) RAG ΓÇô Knowledge, Memory & Truth Layer RAG Role in the System  Acts as the organizational memory and truth anchor.  Con...
+
+[FOUND] 'SLM Doc'
+  Doc ID:     ceeffb3a-efac-4efc-b182-49493a6f006b
+  Org ID:     dde0a075-5eb3-4b4b-8de3-0a6b1162951f
+  Proj ID:    833ab297-26fb-4c33-a90d-92a6cf3e76f5
+  Chunks:     1
+  ΓÜá∩╕Å MISMATCH: This document belongs to Org dde0a075-5eb3-4b4b-8de3-0a6b1162951f, but user is in Org None
+  Chunk 0: (1726 chars) SLM ΓÇô System Control & Governance Layer SLM Role in the System  Acts as the control brain of the platform.  Responsibl...
+
+[FOUND] 'Full Document '
+  Doc ID:     e8982c4e-dcea-4731-9f36-4acdb38bdbeb
+  Org ID:     dde0a075-5eb3-4b4b-8de3-0a6b1162951f
+  Proj ID:    833ab297-26fb-4c33-a90d-92a6cf3e76f5
+  Chunks:     3
+  ΓÜá∩╕Å MISMATCH: This document belongs to Org dde0a075-5eb3-4b4b-8de3-0a6b1162951f, but user is in Org None
+  Chunk 0: (2749 chars) This is the full Document FEATURE 1: Persona Switch (HR Γåö AI Delivery Manager Γåö Execu╞ƒve) 1. What this feature does The ...
+  Chunk 1: (2725 chars) o execute ac ╞ƒon o show result 4. DevilΓÇÖs Advocate ∩é╖ What if user tries to approve someone elseΓÇÖs leave? ∩é╖ What if leave...
+  Chunk 2: (1851 chars) KPI: o de∩¼üne how chatbot explains it o de∩¼üne what ac ╞ƒons it can suggest 3. Output format: o summary o risks o recommend...

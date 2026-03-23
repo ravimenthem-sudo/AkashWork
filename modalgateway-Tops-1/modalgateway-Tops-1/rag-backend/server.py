@@ -101,13 +101,43 @@ supabase = SimpleSupabaseClient(SUPABASE_URL, SUPABASE_KEY)
 # -----------------------------------------------------------------------------
 # 2. PARSING & CHUNKING
 # -----------------------------------------------------------------------------
-def chunk_text(text: str, chunk_size=500, overlap=50) -> List[str]:
-    words = text.split()
-    if not words: return []
+import re
+def chunk_text(text: str, max_chunk_words=500, overlap_words=50) -> List[str]:
+    """Semantic chunking: Split text prioritizing paragraphs and sentences."""
+    if not text.strip(): return []
+    text = re.sub(r'\r\n', '\n', text)
+    paragraphs = re.split(r'\n{2,}', text)
     chunks = []
-    for i in range(0, len(words), chunk_size - overlap):
-        chunk = " ".join(words[i:i + chunk_size])
-        chunks.append(chunk)
+    current_chunk = ""
+    current_word_count = 0
+    for para in paragraphs:
+        para = para.strip()
+        if not para: continue
+        sentences = re.split(r'(?<=[.!?])\s+', para)
+        for sentence in sentences:
+            sentence = sentence.strip()
+            if not sentence: continue
+            words = sentence.split()
+            word_count = len(words)
+            if word_count > max_chunk_words:
+                if current_chunk:
+                    chunks.append(current_chunk.strip())
+                    current_chunk = ""
+                    current_word_count = 0
+                for i in range(0, word_count, max_chunk_words - overlap_words):
+                    chunks.append(" ".join(words[i:i + max_chunk_words]))
+                continue
+            if current_word_count + word_count > max_chunk_words and current_word_count > 0:
+                chunks.append(current_chunk.strip())
+                current_words = current_chunk.split()
+                overlap_text = " ".join(current_words[-overlap_words:]) if len(current_words) > overlap_words else current_chunk
+                current_chunk = overlap_text + " " + sentence
+                current_word_count = len(current_chunk.split())
+            else:
+                current_chunk = (current_chunk + " " + sentence).strip()
+                current_word_count += word_count
+        if current_chunk: current_chunk += "\n\n"
+    if current_chunk.strip(): chunks.append(current_chunk.strip())
     return chunks
 
 def get_embeddings_batch(texts: List[str]) -> List[List[float]]:
@@ -248,10 +278,15 @@ async def query_rag(req: QueryRequest):
             filters["project_id"] = req.project_id
             
 
+        # Wide Retrieval Logic: detect broad intent
+        broad_keywords = ["explain", "overview", "goal", "summary", "project", "whole"]
+        is_broad = any(kw in req.question.lower() for kw in broad_keywords)
+        count = 40 if is_broad else 5
+
         params = {
             "query_embedding": q_emb,
             "match_threshold": 0.50, # Lowering threshold to ensure matches
-            "match_count": 5,
+            "match_count": count,
             "filter": filters
         }
         

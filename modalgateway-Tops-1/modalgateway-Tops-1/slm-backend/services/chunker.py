@@ -111,23 +111,43 @@ class DocumentChunker:
     
     def _chunk_text(self, text: str) -> List[str]:
         """
-        Split text into chunks with overlap
-        Using simple word-based chunking (can be upgraded to token-based)
+        Split text into chunks with overlap prioritizing sentences and paragraphs
+        to avoid fragmenting meaning.
         """
-        words = text.split()
+        if not text.strip(): return []
+        text = re.sub(r'\r\n', '\n', text)
+        paragraphs = re.split(r'\n{2,}', text)
         chunks = []
-        
-        i = 0
-        while i < len(words):
-            # Take chunk_size words
-            chunk_words = words[i:i + self.base_chunk_size]
-            chunk_text = ' '.join(chunk_words)
-            
-            chunks.append(chunk_text)
-            
-            # Move by (chunk_size - overlap) for next chunk
-            i += (self.base_chunk_size - self.overlap)
-        
+        current_chunk = ""
+        current_word_count = 0
+        for para in paragraphs:
+            para = para.strip()
+            if not para: continue
+            sentences = re.split(r'(?<=[.!?])\s+', para)
+            for sentence in sentences:
+                sentence = sentence.strip()
+                if not sentence: continue
+                words = sentence.split()
+                word_count = len(words)
+                if word_count > self.base_chunk_size:
+                    if current_chunk:
+                        chunks.append(current_chunk.strip())
+                        current_chunk = ""
+                        current_word_count = 0
+                    for i in range(0, word_count, self.base_chunk_size - self.overlap):
+                        chunks.append(" ".join(words[i:i + self.base_chunk_size]))
+                    continue
+                if current_word_count + word_count > self.base_chunk_size and current_word_count > 0:
+                    chunks.append(current_chunk.strip())
+                    current_words = current_chunk.split()
+                    overlap_text = " ".join(current_words[-self.overlap:]) if len(current_words) > self.overlap else current_chunk
+                    current_chunk = overlap_text + " " + sentence
+                    current_word_count = len(current_chunk.split())
+                else:
+                    current_chunk = (current_chunk + " " + sentence).strip()
+                    current_word_count += word_count
+            if current_chunk: current_chunk += "\n\n"
+        if current_chunk.strip(): chunks.append(current_chunk.strip())
         return chunks
 
 # Global instance
