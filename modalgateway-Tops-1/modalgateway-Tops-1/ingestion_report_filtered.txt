@@ -1,8 +1,0 @@
---- DOCUMENT INGESTION AUDIT REPORT (Org: dde0a075-5eb3-4b4b-8de3-0a6b1162951f, Proj: 833ab297-26fb-4c33-a90d-92a6cf3e76f5) ---
-TITLE                                    | UPLOADED AT               | STATUS               | CHUNKS
---------------------------------------------------------------------------------------------------------------
-SLM Test Doc                             | 2026-01-07T11:24:47.331622+00:00 | ✅ PROCESSED          | 4 chunks
-Full Document                            | 2026-01-07T03:55:18.111129+00:00 | ✅ PROCESSED          | 3 chunks
-RAG Document                             | 2026-01-07T03:53:12.908137+00:00 | ✅ PROCESSED          | 1 chunks
-LLM Document                             | 2026-01-07T03:52:45.594436+00:00 | ✅ PROCESSED          | 1 chunks
-SLM Doc                                  | 2026-01-07T03:52:11.082185+00:00 | ✅ PROCESSED          | 1 chunks

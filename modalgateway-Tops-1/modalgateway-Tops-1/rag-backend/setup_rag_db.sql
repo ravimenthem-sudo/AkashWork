@@ -21,6 +21,8 @@ create table if not exists document_chunks (
   document_id uuid references documents(id) on delete cascade,
   org_id uuid not null,
   project_id uuid,
+  task_id uuid, -- Added for task-level RAG
+  phase text,   -- Added for phase-level RAG
   content text,
   embedding vector(1536) -- OpenAI text-embedding-3-small matches 1536 dimensions
 );
@@ -57,8 +59,10 @@ begin
     1 - (document_chunks.embedding <=> query_embedding) as similarity
   from document_chunks
   where 1 - (document_chunks.embedding <=> query_embedding) > match_threshold
+  
   -- Filter by org_id (required)
   and document_chunks.org_id = (filter->>'org_id')::uuid
+  
   -- Filter by project_id (allow global docs with NULL project_id)
   and (
       document_chunks.project_id is null 
@@ -67,6 +71,28 @@ begin
       or 
       document_chunks.project_id = (filter->>'project_id')::uuid
   )
+
+  -- NEW: Support optional task_id filtering
+  and (
+    (filter->>'task_id') is null
+    or
+    document_chunks.task_id = (filter->>'task_id')::uuid
+  )
+
+  -- NEW: Support optional phase filtering
+  and (
+    (filter->>'phase') is null
+    or
+    document_chunks.phase = (filter->>'phase')
+  )
+
+  -- NEW: Support optional document_id filtering (Restricted Search)
+  and (
+    (filter->>'document_id') is null
+    or
+    document_chunks.document_id = (filter->>'document_id')::uuid
+  )
+  
   order by document_chunks.embedding <=> query_embedding
   limit match_count;
 end;

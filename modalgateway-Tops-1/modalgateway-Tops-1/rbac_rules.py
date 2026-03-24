@@ -94,6 +94,10 @@ ACTION_REGISTRY = {
         "description": "Fetch a summary of recruitment status to show in chat.",
         "parameters": {}
     },
+    "get_policies": {
+        "description": "LIST all available organizational policies directly in the chat window. Use this for 'show policies', 'what are the company policies', etc.",
+        "parameters": {}
+    },
     "get_jobs": {
         "description": "List open job positions in the chat.",
         "parameters": {"department": "string"}
@@ -129,14 +133,14 @@ RBAC_RULES = {
         "get_tasks", "update_task_status", 
         "get_attendance", "clock_in", "clock_out", 
         "get_leave_balance", "apply_leave", 
-        "get_project_documents",
+        "get_project_documents", "get_policies",
         "chat", "greeting", "navigate_to_module"
     ],
     "team_lead": [
         "get_tasks", "update_task_status", "assign_task", 
         "get_attendance", "clock_in", "clock_out", 
         "get_leave_balance", "apply_leave", "get_pending_leaves", "approve_leave", "reject_leave", 
-        "get_project_documents",
+        "get_project_documents", "get_policies",
         "chat", "greeting", "navigate_to_module"
     ],
     "manager": [
@@ -144,7 +148,7 @@ RBAC_RULES = {
         "get_attendance", "clock_in", "clock_out", "mark_attendance",
         "get_pending_leaves", "get_leave_balance", "apply_leave", "approve_leave", "reject_leave",
         "get_team_members", "get_org_hierarchy", "get_project_hierarchy",
-        "get_project_documents", "upload_document", "delete_document",
+        "get_project_documents", "get_policies", "upload_document", "delete_document",
         "get_projects", "update_project",
         "get_hiring_overview", "get_jobs", "get_candidates",
         "chat", "greeting", "navigate_to_module"
@@ -155,7 +159,7 @@ RBAC_RULES = {
         "get_pending_leaves", "get_leave_balance", "apply_leave", "approve_leave", "reject_leave",
         "get_team_members", "get_org_hierarchy", "get_project_hierarchy",
         "post_announcement", "create_event", "update_event", "delete_event", "get_notifications",
-        "get_project_documents", "upload_document", "delete_document",
+        "get_project_documents", "get_policies", "upload_document", "delete_document",
         "create_project", "update_project", "get_projects", "add_project_member", "remove_project_member",
         "get_hiring_overview", "get_jobs", "get_candidates",
         "chat", "greeting", "navigate_to_module"

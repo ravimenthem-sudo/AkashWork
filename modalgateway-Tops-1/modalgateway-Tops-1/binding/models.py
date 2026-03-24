@@ -9,6 +9,7 @@ class SLMQueryRequest(BaseModel):
     task_id: Optional[str] = None # NEW
     org_id: Optional[str] = None
     team_id: Optional[str] = None
+    phase: Optional[str] = None # NEW
     context: Optional[Dict[str, Any]] = None
     is_confirmed: bool = False
     pending_action: Optional[str] = None
@@ -18,6 +19,8 @@ class SLMQueryRequest(BaseModel):
     rag_source: Optional[str] = None
     history: Optional[List[Dict[str, str]]] = None
     app_name: Optional[str] = None
+    target_doc_id: Optional[str] = None    # NEW: Contextual persistence
+    target_doc_title: Optional[str] = None # NEW: Contextual persistence
 
 class SLMQueryResponse(BaseModel):
     response: str
@@ -58,11 +61,12 @@ class RAGIngestRequest(BaseModel):
     app_name: Optional[str] = "talentops"
 
 class RAGQueryRequest(BaseModel):
-    question: str
+    query: str
     user_id: Optional[str] = None # Added for privacy
     org_id: Optional[str] = None
     project_id: Optional[str] = None
     task_id: Optional[str] = None # NEW
+    phase: Optional[str] = None   # NEW
     app_name: Optional[str] = "talentops"
     target_doc_id: Optional[str] = None
     target_doc_title: Optional[str] = None

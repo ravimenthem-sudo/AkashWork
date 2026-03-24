@@ -1,2 +1,0 @@
-﻿RAGTEST Match: True | Sources: ['Proxy Test']
-Supabase Match: True | Sources: ['Task Guidance: chatbot backend (design_guidance)']
