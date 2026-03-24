@@ -373,7 +373,9 @@ const Chatbot = () => {
                                     borderTopLeftRadius: msg.role === 'ai' ? '2px' : '12px',
                                     borderTopRightRadius: msg.role === 'user' ? '2px' : '12px',
                                     whiteSpace: 'pre-wrap',
-                                    wordBreak: 'break-word'
+                                    wordBreak: 'break-word',
+                                    userSelect: 'text',
+                                    cursor: 'text'
                                 }}>
                                     <p style={{ fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
                                         {msg.text}
